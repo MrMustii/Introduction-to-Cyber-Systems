@@ -1,0 +1,42 @@
+Register file content:
+R0 = 0
+R1 = 19
+R2 = 20
+R3 = 1
+R4 = 1
+R5 = 8
+R6 = 9
+R7 = 20
+R8 = 17
+R9 = 20
+R10 = 26
+R11 = 0
+R12 = 0
+R13 = 0
+R14 = 0
+R15 = 0
+
+Data memory content (used locations only):
+Address 0 = 8
+Address 1 = 9
+Address 2 = 1
+Address 3 = 2
+Address 4 = 7
+Address 5 = 6
+Address 6 = 5
+Address 7 = 3
+Address 8 = 4
+Address 9 = 0
+Address 10 = 0
+Address 11 = 1
+Address 12 = 2
+Address 13 = 3
+Address 14 = 4
+Address 15 = 5
+Address 16 = 6
+Address 17 = 7
+Address 18 = 8
+Address 19 = 9
+
+
+Executes in 752 cycles for the provided array.

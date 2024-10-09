@@ -1,0 +1,24 @@
+Register file content:
+R0 = 0
+R1 = 26
+R2 = 9
+R3 = 20
+R4 = 2
+R5 = 11
+R6 = 9
+R7 = 244
+R8 = 0
+R9 = 0
+R10 = 0
+R11 = 0
+R12 = 0
+R13 = 255
+R14 = 255
+R15 = 0
+
+Data memory content (used locations only):
+Address 0 = 11
+Address 1 = 9
+Address 2 = 20
+
+Executes in 24 cycles.

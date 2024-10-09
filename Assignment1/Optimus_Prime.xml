@@ -1,0 +1,100 @@
+<fsmddescription>
+    <statelist>
+        <state>INITIALIZE</state>
+        <state>TEST</state>
+        <state>INCREMENT</state>
+        <state>NOT_PRIME</state>
+        <state>PRIME</state>
+    </statelist>
+    <initialstate>INITIALIZE</initialstate>
+    <inputlist>
+    </inputlist>
+     <variablelist>
+         <variable>var</variable>
+         <variable>var_th</variable>
+         <variable>i</variable>
+     </variablelist>
+     <operationlist>
+         <operation>
+             <name>init_var</name>
+             <expression>var=9</expression>
+         </operation>
+         <operation>
+             <name>init_i</name>
+             <expression>i=2</expression>
+         </operation>
+         <operation>
+             <name>init_var_th</name>
+             <expression>var_th=var/2</expression>
+         </operation>
+         <operation>
+             <name>inc</name>
+             <expression>i=i+1</expression>
+         </operation>
+     </operationlist>
+     <conditionlist>
+         <condition>
+             <name>Remainder_0</name>
+             <expression>var&#37;i ==0</expression>
+         </condition>
+         <condition>
+             <name>var_is_2</name>
+             <expression>var == 2</expression>
+         </condition>
+         <condition>
+             <name>th</name>
+             <expression>var_th &lt;= i</expression>
+         </condition>
+      	 <condition>
+             <name>var_is_1</name>
+             <expression>var == 1</expression>
+         </condition>
+     </conditionlist>
+     <fsmd>
+         <INITIALIZE>
+             <transition>
+                 <condition>True</condition>
+                 <instruction>init_var init_i init_var_th</instruction>
+                 <nextstate>TEST</nextstate>
+             </transition>
+         </INITIALIZE>
+         <TEST>
+             <transition>
+                 <condition>(Remainder_0 and not var_is_2) or var_is_1</condition>
+                 <instruction>NOP</instruction>
+                 <nextstate>NOT_PRIME</nextstate>
+             </transition>
+             <transition>
+                 <condition>not Remainder_0 and not th</condition>
+                 <instruction>NOP</instruction>
+                 <nextstate>INCREMENT</nextstate>
+             </transition>
+             <transition>
+                 <condition>((not Remainder_0) and (th)and not var_is_1)or var_is_2</condition>
+                 <instruction>NOP</instruction>
+                 <nextstate>PRIME</nextstate>
+             </transition>
+         </TEST>
+         <INCREMENT>
+             <transition>
+                 <condition>True</condition>
+                 <instruction>inc</instruction>
+                 <nextstate>TEST</nextstate>
+             </transition>
+         </INCREMENT>
+         <NOT_PRIME>
+             <transition>
+                 <condition>True</condition>
+                 <instruction>NOP</instruction>
+                 <nextstate>NOT_PRIME</nextstate>
+             </transition>
+         </NOT_PRIME>
+         <PRIME>
+             <transition>
+                 <condition>True</condition>
+                 <instruction>NOP</instruction>
+                 <nextstate>PRIME</nextstate>
+             </transition>
+         </PRIME>
+     </fsmd>
+</fsmddescription>

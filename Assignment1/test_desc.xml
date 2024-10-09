@@ -1,0 +1,89 @@
+<fsmddescription>
+
+  <statelist>
+    <state>INITIALIZE</state>
+    <state>COMPUTE</state>
+    <state>DONE</state>
+  </statelist>
+
+  <initialstate>INITIALIZE</initialstate>
+
+  <variablelist>
+    <variable>var_A</variable>
+    <variable>var_TH</variable>
+  </variablelist>
+
+  <inputlist>
+  </inputlist>
+
+  <operationlist>
+    <operation>
+      <name>init_A</name>
+      <expression>var_A = 10</expression>
+    </operation>
+    <operation>
+      <name>init_TH</name>
+      <expression>var_TH = 0</expression>
+    </operation>
+    <operation>
+      <name>decr_A</name>
+      <expression>var_A = var_A - 1</expression>
+    </operation>
+    <operation>
+      <name>incr_A</name>
+      <expression>var_A = var_A + 1</expression>
+    </operation>
+    </operationlist>
+
+  <conditionlist>
+    <condition>
+      <name>A_equal_TH</name>
+      <expression>var_A == var_TH</expression>
+    </condition>
+    <condition>
+      <name>A_greater_TH</name>
+      <expression>var_A &gt; var_TH</expression>
+    </condition>
+    <condition>
+      <name>TH_greater_A</name>
+      <expression>var_A &lt; var_TH</expression>
+    </condition>
+  </conditionlist>
+
+  <fsmd>
+    <INITIALIZE>
+      <transition>
+        <condition>True</condition>
+        <instruction>init_A init_TH</instruction>
+        <nextstate>COMPUTE</nextstate>
+      </transition>
+    </INITIALIZE>
+
+    <COMPUTE>
+      <transition>
+        <condition>A_equal_TH</condition>
+        <instruction>NOP</instruction>
+        <nextstate>DONE</nextstate>
+      </transition>
+      <transition>
+        <condition>A_greater_TH</condition>
+        <instruction>decr_A</instruction>
+        <nextstate>COMPUTE</nextstate>
+      </transition>
+      <transition>
+        <condition>TH_greater_A</condition>
+        <instruction>incr_A</instruction>
+        <nextstate>COMPUTE</nextstate>
+      </transition>
+    </COMPUTE>
+
+    <DONE>
+      <transition>
+        <condition>True</condition>
+        <instruction>NOP</instruction>
+        <nextstate>DONE</nextstate>
+      </transition>
+    </DONE>
+  </fsmd>
+
+</fsmddescription>

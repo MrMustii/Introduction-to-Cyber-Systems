@@ -1,0 +1,33 @@
+# Program to test all instructions written in machine language
+# Check the expected output and compare it with the one of your simulator
+# The format is: <instruction mem. address>: <OPCODE> <COMMA SEPARATED OPERANDS>;
+# All numers are decimal 
+0: LI R1, 1;  # Load the value 1 into R1
+1: LD R2, R1;  # Load mem(1) into R2
+2: LD R1, R0;  # Load mem(0) into R1
+3: ADD R3, R1, R2;  #  R3 = R1 + R2
+4: SUB R4, R1, R2;  #  R4 = R1 - R2
+5: OR R5, R1, R2;  #  R5 = R1 or R2
+6: AND R6, R1, R2;  #  R6 = R1 and R2
+7: NOT R7, R1;  #  R7 = not(R1)
+8: NOP;  # Do nothing
+9: LI R1, 12;  # Load the value 12 into R1
+10: JR R1;  # Jump execution to address
+11: LI R15, 255;  # Load the value 255 into R15 (never executed)
+12: LI R1, 2;  # Load the value 2 into R1
+13: SD R3, R1;  # Store R3 into mem(2)
+14: LI R1, 17;  # Load the value 17 into R1
+15: JEQ R1, R3, R0;  # Jump if R3==0
+16: LI R13, 255;  # Load the value 255 into R13 (executed)
+17: LI R1, 20;  # Load the value 12 into R1
+18: JEQ R1, R1, R3;  # Jump if R3 == R1
+19: LI R15, 255;  # Load the value 255 into R15 (never executed)
+20: LI R1, 23;  # Load the value 12 into R1
+21: JLT R1, R0, R3;  # Jump if R3>0
+22: LI R14, 255;  # Load the value 255 into R15 (never executed)
+23: LI R1, 26;  # Load the value 12 into R1
+24: JLT R1, R3, R0;  # Jump if R3<0
+25: LI R14, 255;  # Load the value 255 into R14 (executed)
+26: NOP;  # Do nothing
+27: END;  # Terminate execution
+

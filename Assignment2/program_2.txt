@@ -1,0 +1,49 @@
+# Program to bubble sort an array of 10 values
+# Check the expected output and compare it with the one of your simulator
+# The format is: <instruction mem. address>: <OPCODE> <COMMA SEPARATED OPERANDS>;
+# All numers are decimal 
+
+# Copy the array from source (0-9) to destination (10-19)
+0: LI R1, 0;  # R1 is the read pointer
+1: LI R2, 10;  # R2 is the write pointer
+2: LI R3, 1;  # R3 is the unit to increment or decrememnt
+3: LI R4, 9;  # R4 is the counter for copy
+# R5 is the temporary buffer for copy
+4: LI R6, 6;  # Copy: address
+5: LI R7, 13;  # Done copy address
+
+# copy:
+6: LD R5, R1;  # Read form mem(read pointer)
+7: SD R5, R2;  # Write to mem(write pointer)
+8: JEQ R7, R4, R0;  # Goto done: if the counter is zero
+9: SUB R4, R4, R3;  # Decrement counter
+10: ADD R1, R1, R3;  # Increment read pointer
+11: ADD R2, R2, R3;  # Increment write pointer
+12: JR R6;  # Goto copy:
+
+# Start with the bubble sort:
+13: LI R7, 20;  # R7 is lower memory boundary
+14: LI R8, 17;  # Bubble address
+15: LI R9, 20;  # New round address
+16: LI R10, 26;  # No swap address
+
+# bubble:
+17: LI R1, 10;  # R1 is the read/write pointer 1
+18: LI R2, 11;  # R2 is the read/write pointer 2
+19: LI R4, 1;  # R4 is the flag register (zero when something swapped)
+# R5, R6 are the temporary buffers for copy
+
+# new round:
+20: LD R5, R1;  # Read form mem(read pointer 1)
+21: LD R6, R2;  # Read form mem(read pointer 2)
+22: JLT R10, R5, R6;  # If R5<R6, swap
+23: SD R6, R1;  # Write to mem(write pointer 1)
+24: SD R5, R2;  # Write to mem(write pointer 2)
+25: LI R4, 0;  # R4 flag register zero (something swapped)
+
+# no swap:
+26: ADD R1, R1, R3;  # Increment pointer 1
+27: ADD R2, R2, R3;  # Increment pointer 2
+28: JLT R9, R2, R7;  # Repeat if pointer 2 is less than 20
+29: JEQ R8, R4, R0;  # If flag is 0, repeat bubble
+30: END;
